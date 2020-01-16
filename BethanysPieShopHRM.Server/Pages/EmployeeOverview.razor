@@ -1,0 +1,36 @@
+﻿@page "/employeeoverview"
+@inherits EmployeeOverviewBase;
+
+    <h1 class="page-title">Lista empleados</h1>
+@if(Employees == null)
+{
+    <p>Cargando...</p>
+}
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Empleado ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Employees)
+            {
+            <tr>
+                <td></td>
+                <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{empleado.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                <td>@empleado.EmployeeId</td>
+                <td>@empleado.FirstName</td>
+                <td>@empleado.LastName</td>
+                <td>
+                    <a href="@($"employeedetail/{empleado.EmployeeId}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
