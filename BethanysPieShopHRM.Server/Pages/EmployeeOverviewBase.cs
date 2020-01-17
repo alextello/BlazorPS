@@ -1,21 +1,24 @@
-﻿using BethanysPieShopHRM.Shared;
+﻿using BethanysPieShopHRM.Server.Services;
+using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.Server.Pages
 {
     public class EmployeeOverviewBase : ComponentBase
     {
-        protected override Task OnInitializedAsync()
+        [Inject]
+        public IEmployeeDataService EmployeeDataService { get; set; }
+
+        public Employee Employee { get; set; }
+        public List<Employee> Employees { get; set; }
+        protected override async Task OnInitializedAsync()
         {
-            InitializeCountries();
-            InitializeJobCategories();
-            InitializeEmployees();
-            return base.OnInitializedAsync();
+            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
-        public IEnumerable<Employee> Employees { get; set; }
 
         private List<Country> Countries { get; set; }
 

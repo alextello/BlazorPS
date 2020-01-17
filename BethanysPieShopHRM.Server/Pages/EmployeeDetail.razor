@@ -1,6 +1,8 @@
 ﻿@page "/employeedetail/{EmployeeId}"
 @inherits EmployeeDetailBase
 
+@if(Employee != null)
+{
 
 <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
 
@@ -112,3 +114,5 @@
         </div>
     </div>
 </div>
+
+}
