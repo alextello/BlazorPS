@@ -26,6 +26,13 @@ namespace BethanysPieShopHRM.Server
                 {
                     client.BaseAddress = new Uri("https://localhost:44340/");//URL DEL PROYECTO API EL CUAL VA A CONSUMIR EL PROYECTO BASE DE BLAZOR
                 });
+
+            services.AddHttpClient<ICountryDataService, CountryDataService>(
+               client =>
+               {
+                   client.BaseAddress = new Uri("https://localhost:44340/");//URL DEL PROYECTO API EL CUAL VA A CONSUMIR EL PROYECTO BASE DE BLAZOR
+               });
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
         }

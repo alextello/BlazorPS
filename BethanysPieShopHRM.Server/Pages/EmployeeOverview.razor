@@ -1,8 +1,8 @@
 ﻿@page "/employeeoverview"
 @inherits EmployeeOverviewBase;
 
-    <h1 class="page-title">Lista empleados</h1>
-@if(Employees == null)
+<h1 class="page-title">Lista empleados</h1>
+@if (Employees == null)
 {
     <p>Cargando...</p>
 }
@@ -22,18 +22,21 @@ else
         <tbody>
             @foreach (var empleado in Employees)
             {
-            <tr>
-                <td></td>
-                <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{empleado.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
-                <td>@empleado.EmployeeId</td>
-                <td>@empleado.FirstName</td>
-                <td>@empleado.LastName</td>
-                <td>
-                    <a href="@($"employeedetail/{empleado.EmployeeId}")" class="btn btn-primary table-btn">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
-            </tr>
+                <tr>
+                    <td></td>
+                    <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{empleado.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                    <td>@empleado.EmployeeId</td>
+                    <td>@empleado.FirstName</td>
+                    <td>@empleado.LastName</td>
+                    <td>
+                        <a href="@($"employeedetail/{empleado.EmployeeId}")" class="btn btn-primary table-btn">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="@($"employeeedit/{empleado.EmployeeId}")" class="btn btn-primary table-btn">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

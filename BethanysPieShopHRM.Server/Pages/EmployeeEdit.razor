@@ -1,0 +1,23 @@
+﻿@inherits EmployeeEditBase;
+@page "/employeeedit"
+@page "/employeeedit/{EmployeeId}"
+<sectiopn class="employee-edit">
+    <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
+
+    <EditForm Model="@Employee">
+        <div class="form-group">
+            <label class="col-sm-3">Last name:</label>
+            <InputText id="LastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName" placeholder="Ingrese apellido"></InputText>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3">Last name:</label>
+            <InputSelect id="country" class="form-control col-sm-8" @bind-Value="@CountryId">
+                @foreach (var country in Countries)
+                {
+                    <option value="@country.CountryId">@country.Name</option>
+                }
+            </InputSelect>
+        </div>
+    </EditForm>
+</sectiopn>
